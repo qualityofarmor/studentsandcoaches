@@ -11,6 +11,7 @@ ActiveRecord::Base.establish_connection(
 ActiveRecord::Schema.define do
   create_table :coaches, force: true do |t|
     t.string :name
+    t.integer :work_ratio
   end
 
   create_table :students, force: true do |t|
