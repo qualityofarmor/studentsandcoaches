@@ -13,6 +13,15 @@ Requirements (paraphrased):
   and the coaches with the least amount of students are the first to be assigned
   students.
 
+### Problem #1
+Evenly assign a group of students to their respective coaches.
+
+### Problem #2
+Evenly assign a group of students to their respective coaches regardless of each coach's existing student count.
+
+### Problem #3
+Evenly assign a group of students to their respective coaches based on a coach's predetermined workload ratio.
+
 
 ## Make it work
 his was built using ruby 2.1.5
