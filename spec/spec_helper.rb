@@ -16,7 +16,11 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'active_record'
+require 'sqlite3'
+require 'rspec'
 require_relative '../environment.rb'
+
 require_relative '../lib/student.rb'
 require_relative '../lib/coach.rb'
 RSpec.configure do |config|
