@@ -37,4 +37,33 @@ describe Coach do
     expect(coach.student_count).to eq 3
   end
 
+  it 'is assigned students in accordance with a collective and even distribution' do
+      coach_one = Coach.create!(name: 'Coach Halford')
+      coach_two = Coach.create!(name: 'Coach Pollard')
+      coach_three = Coach.create!(name: 'Coach Danzig')
+      coach_list = [coach_one, coach_two, coach_three]
+
+      student_list = []
+      student_list << Student.create({name: 'Ava Minor'})
+      student_list << Student.create({name: 'Bee Sharpe'})
+      student_list << Student.create({name: 'Cilia Seven'})
+      student_list << Student.create({name: 'Dee Major'})
+      student_list << Student.create({name: 'Ealia Flatt'})
+      student_list << Student.create({name: 'Eff Adnine'})
+      student_list << Student.create({name: 'Ohpen Jee'})
+
+      assign_students(student_list, coach_list)
+      # coach_list.sort_by! { |c| c.student_count }
+      puts "\n --- POST ASSIGNMENT NUMBERS -- "
+      coach_list.each do |c|
+        puts "#{c[:name]} -> #{c.student_count}"
+      end
+
+      expect(coach_list.first.student_count).to eq 3
+      expect(coach_list.second.student_count).to eq 2
+      expect(coach_list.third.student_count).to eq 2
+
+  end
+
+
 end
