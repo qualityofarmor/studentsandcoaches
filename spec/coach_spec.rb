@@ -38,11 +38,11 @@ describe Coach do
   end
 
   it 'is assigned students in accordance with a collective and even distribution' do
-      coach_one = Coach.create!(name: 'Coach Halford')
-      coach_two = Coach.create!(name: 'Coach Pollard')
-      coach_three = Coach.create!(name: 'Coach Danzig')
-      coach_list = [coach_one, coach_two, coach_three]
-
+      coach_list = []
+      coach_list << Coach.create!(name: 'Coach Halford')
+      coach_list << Coach.create!(name: 'Coach Pollard')
+      coach_list << Coach.create!(name: 'Coach Danzig')
+      
       student_list = []
       student_list << Student.create({name: 'Ava Minor'})
       student_list << Student.create({name: 'Bee Sharpe'})
