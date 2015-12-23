@@ -7,7 +7,6 @@ class Coach < ActiveRecord::Base
 
   def initialize(attributes = nil)
     super(attributes)
-    pp attributes
     @student_roster = []
     @work_ratio = nil
   end
@@ -27,7 +26,6 @@ class Coach < ActiveRecord::Base
   end
 
   def work_ratio_percentage
-    puts "WORK RATIO: #{@work_ratio}"
     @work_ratio / (100.to_f)
   end
 

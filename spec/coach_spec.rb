@@ -34,6 +34,7 @@ describe Coach do
     student_list.each do |s|
       coach.add_student(s)
     end
+    
     expect(coach.student_count).to eq 3
   end
 
@@ -83,11 +84,6 @@ describe Coach do
       student_list << Student.create({name: 'Keith Richards'})
 
       assign_students(student_list, coach_list)
-      # coach_list.sort_by! { |c| c.student_count }
-      puts "\n --- PROBLEM Num. 2 POST ASSIGNMENT NUMBERS -- "
-      coach_list.each do |c|
-        puts "#{c[:name]} -> #{c.student_count}"
-      end
 
       expect(coach_list.first.student_count).to eq 3
       expect(coach_list.second.student_count).to eq 2
@@ -101,10 +97,6 @@ describe Coach do
       student_list << Student.create({name: 'Elliott Smith'})
 
       assign_students(student_list, coach_list)
-      puts "\n --- PROBLEM Num. 2 POST POST ASSIGNMENT NUMBERS -- "
-      coach_list.each do |c|
-        puts "#{c[:name]} -> #{c.student_count}"
-      end
 
       expect(coach_list.first.student_count).to eq 4
       expect(coach_list.second.student_count).to eq 4
@@ -117,4 +109,42 @@ describe Coach do
     coach.add_work_ratio(35)
     expect(coach.work_ratio_percentage).to eq (35 / 100.to_f)
   end
+
+  it "distributes students based on a coach's work ratio" do
+
+    coach_list = []
+    coach_list << Coach.create!(name: 'Coach Slick Rick')
+    coach_list << Coach.create!(name: 'Coach Guru')
+    coach_list << Coach.create!(name: 'Coach Smalls')
+
+    coach_list.first.add_work_ratio(20)
+    coach_list.second.add_work_ratio(30)
+    coach_list.third.add_work_ratio(50)
+
+    student_list = []
+    student_list << Student.create({name: 'Mos Def'})
+    student_list << Student.create({name: 'Talib Quali'})
+    student_list << Student.create({name: 'Slick Rick'})
+    student_list << Student.create({name: 'The RZA'})
+    student_list << Student.create({name: 'Ol Dirty Bastard'})
+    student_list << Student.create({name: 'The GZA'})
+    student_list << Student.create({name: 'Method Man'})
+    student_list << Student.create({name: 'Ghostface Killah'})
+    student_list << Student.create({name: 'Raekwon'})
+    student_list << Student.create({name: 'KRS One'})
+    student_list << Student.create({name: 'Guru Gangstarr'})
+    student_list << Student.create({name: 'Funkmaster Flex'})
+    student_list << Student.create({name: 'Deejay Assault'})
+    student_list << Student.create({name: 'Debbie Harry'})
+    student_list << Student.create({name: 'Adam Yauch'})
+    student_list << Student.create({name: 'Mike Dee'})
+
+    assign_students_by_percentage(student_list, coach_list)
+
+    expect(coach_list.first.student_count).to eq 3
+    expect(coach_list.second.student_count).to eq 4
+    expect(coach_list.third.student_count).to eq 8
+  end
+
+
 end

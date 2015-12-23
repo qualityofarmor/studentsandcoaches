@@ -5,9 +5,11 @@ require_relative 'lib/coach.rb'
 @student_list = []
 
 def initialize_coaches
-  @coach_list << Coach.create!({name: 'Coach Halford', work_ratio: 20})
-  @coach_list << Coach.create!({name: 'Coach Pollard', work_ratio: 30})
-  @coach_list << Coach.create!({name: 'Coach Danzig', work_ratio: 50})
+  @coach_list = []
+  Coach.delete_all
+  @coach_list << Coach.create!({name: 'Coach Halford'})
+  @coach_list << Coach.create!({name: 'Coach Pollard'})
+  @coach_list << Coach.create!({name: 'Coach Danzig'})
 end
 
 def initialize_students
@@ -31,20 +33,11 @@ def initialize_students
     { name: 'Hunter Thompson' },
     { name: 'CC Deville' },
     { name: 'Paul Westerberg' },
-    { name: 'Ian Mackaye' }
+    { name: 'Ian Mackaye' },
+    { name: 'Henry Rollins' }
   ]
 
   student_info.each do |student|
     @student_list << Student.create(name: student[:name])
   end
-end
-
-initialize_coaches
-initialize_students
-
-@coach_list.first.add_work_ratio(20)
-@coach_list.second.add_work_ratio(30)
-@coach_list.third.add_work_ratio(50)
-@coach_list.each do |c|
-  puts c.work_ratio_percentage
 end
