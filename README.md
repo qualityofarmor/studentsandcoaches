@@ -25,14 +25,18 @@ Evenly assign a group of students to their respective coaches based on a coach's
 
 ## Make it work
 his was built using ruby 2.1.5
-1.  bundle install  
-2.  You can run tests using:
+1.  bundle install
+2.  There's a main file that you can run to show that things work.
+
+
+      $ ruby studentsandcoaches.rb
+
 3.  It'll be using a sqlite database located at db/studentsandcoaches.db
 4.  This code exercise uses Rspec for tests. Run some tests..I insist.  Here's how:
 
 
       $ rspec
 
-alternatively..you can run single verbose tests with:
+alternatively...you can run single verbose tests with:
 
     $ rspec spec/coach_spec.rb --format documentation
